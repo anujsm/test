@@ -1,0 +1,8 @@
+#admin_chart_form {
+    margin: 30px 0;
+}
+ 
+#admin_chart_form label {
+    display: inline-block;
+    width: 250px;
+}

@@ -1,0 +1,38 @@
+<?php
+
+function ourteam1_shortcode ($atts, $content = null) {
+	extract(shortcode_atts(array(
+	'img'=>'',
+	'name' => '',
+	'link' => '',
+	'title' =>'',
+	'text'=>'',
+	), $atts));
+	
+	if(is_numeric($img)){
+		
+		$img = wp_get_attachment_url( $img );
+		
+	}
+	
+		
+	$out  = '<figure class="our-team">';
+		if(!empty($link)){
+			$out .= '<a href="'. $link .'"><img src="'. $img .'" alt=""></a>';
+			$out .= '<figcaption><h4><strong><a href="'. $link .'">'. $name .'</a><br>';
+		}
+		else{
+			$out .= '<img src="'. $img .'" alt="">';
+			$out .= '<figcaption><h4><strong>'. $name .'<br>';
+		}
+	$out .= '<small>'. $title .'</small></strong></h4>';
+	$out .= '<p>'. $text .'</p>';
+	$out .= '<div class="socailfollow">'. do_shortcode($content) .'</div></figcaption>';
+	$out .= '</figure>';
+
+return $out;
+}
+add_shortcode('ourteam','ourteam1_shortcode');
+
+
+?>
